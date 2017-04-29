@@ -1,0 +1,33 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+              "header header header"
+              ". search ."
+              ". main-articles ."
+              "footer footer footer"
+}
+
+.item-a {
+  grid-area: header;
+}
+
+.item-b {
+  grid-area: search;
+}
+
+.item-c {
+  grid-area: main-articles;
+}
+
+.item-d {
+  grid-area: footer;
+}
