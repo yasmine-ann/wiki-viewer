@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgba(188, 227, 206, 1);
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
