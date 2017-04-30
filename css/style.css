@@ -40,6 +40,17 @@ body {
   grid-area: main-articles;
 }
 
+.container-main-articles {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: auto;
+  grid-row-gap: 1em;
+}
+
+.article-entry {
+  justify-self: center;  
+}
+
 .footer {
   grid-area: footer;
 }
