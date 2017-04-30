@@ -9,6 +9,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
   grid-template-areas:
               "header header header"
               ". search ."
@@ -16,18 +18,24 @@
               "footer footer footer"
 }
 
-.item-a {
+.header {
   grid-area: header;
+  justify-self: center;
+  grid-column-start: 2;
+  grid-column-end: span 1;
 }
 
-.item-b {
+.search {
   grid-area: search;
+  justify-self: center;
+  grid-column-start: 2;
+  grid-column-end: span 1;
 }
 
-.item-c {
+.main-articles {
   grid-area: main-articles;
 }
 
-.item-d {
+.footer {
   grid-area: footer;
 }
