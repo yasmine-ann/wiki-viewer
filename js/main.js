@@ -1,7 +1,3 @@
-var model = {
-
-}
-
 var controller = {
   init: function init() {
     controller.setupListener();
@@ -58,6 +54,12 @@ var controller = {
 }
 
 var view = {
+  renderEntry: function renderEntry(title, fullURL, extract) {
+    var titleHTML = '<div class="resultEntry"><h2 class="result-title"><a href="' + fullURL + '">' + title + '</a></h2>';
+    var extractHTML = '<p>' + extract + '</p></div>';
+    var fullEntry = titleHTML + extractHTML;
+    $(".container-main-articles").append(fullEntry);
+  }
 
 }
 
