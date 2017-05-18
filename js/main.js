@@ -18,8 +18,13 @@ var controller = {
       dataType: 'jsonp'
     })
     .done(function(data) {
-      var wikiData = data;
-      console.log(wikiData);
+      var wikiData = data.query.pages;
+
+      for(var x in wikiData) {
+        console.log(x);
+        view.renderEntry(wikiData[x]["title"], wikiData[x]["fullurl"], wikiData[x]["extract"]);
+      }
+
     });
   },
 
