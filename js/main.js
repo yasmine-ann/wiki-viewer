@@ -38,7 +38,6 @@ var controller = {
 
   setupListener: function setupListener() {
     $("#search-button").click(function searchClick() {
-      console.log("CLICK!");
       controller.getArticle();
 
     });
@@ -46,7 +45,6 @@ var controller = {
 
   setupRandomListener: function setupRandomListener() {
     $("#search-random").click(function randomClick() {
-      console.log("Random Click!");
       controller.getRandomArticle();
     });
   }
@@ -55,7 +53,7 @@ var controller = {
 
 var view = {
   renderEntry: function renderEntry(title, fullURL, extract) {
-    var titleHTML = '<div class="resultEntry"><h2 class="result-title"><a href="' + fullURL + '">' + title + '</a></h2>';
+    var titleHTML = '<div class="article-entry"><h2 class="article-title"><a href="' + fullURL + '">' + title + '</a></h2>';
     var extractHTML = '<p>' + extract + '</p></div>';
     $(".container-main-articles").append(titleHTML + extractHTML);
   },
