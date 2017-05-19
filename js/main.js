@@ -7,11 +7,8 @@ var controller = {
 
   getArticle: function getArticle() {
     var inputValue = $("#search-box").val();
-    console.log(inputValue);
     var url = "https://en.wikipedia.org/w/api.php?action=query&prop=info|extracts&exsentences=1&exintro&explaintext&exlimit=max&inprop=url&generator=search&format=json&gsrsearch=";
     url += inputValue;
-
-    console.log(url);
 
     $.ajax({
       url: url,
@@ -19,12 +16,8 @@ var controller = {
     })
     .done(function(data) {
       var wikiData = data.query.pages;
-
-      for(var x in wikiData) {
-        console.log(x);
-        view.renderEntry(wikiData[x]["title"], wikiData[x]["fullurl"], wikiData[x]["extract"]);
-      }
-
+      view.clearEntries();
+      view.renderResults(wikiData);
     });
   },
 
@@ -36,8 +29,10 @@ var controller = {
       dataType: 'jsonp'
     })
     .done(function(data) {
-      var randomWikiData = data;
-      console.log(randomWikiData);
+      var randomWikiData = data.query.pages;
+      view.clearEntries();
+      view.renderResults(randomWikiData);
+
     });
   },
 
@@ -53,7 +48,7 @@ var controller = {
     $("#search-random").click(function randomClick() {
       console.log("Random Click!");
       controller.getRandomArticle();
-    })
+    });
   }
 
 }
@@ -62,8 +57,17 @@ var view = {
   renderEntry: function renderEntry(title, fullURL, extract) {
     var titleHTML = '<div class="resultEntry"><h2 class="result-title"><a href="' + fullURL + '">' + title + '</a></h2>';
     var extractHTML = '<p>' + extract + '</p></div>';
-    var fullEntry = titleHTML + extractHTML;
-    $(".container-main-articles").append(fullEntry);
+    $(".container-main-articles").append(titleHTML + extractHTML);
+  },
+
+  renderResults: function renderResults(dataObj) {
+    for(var x in dataObj) {
+      view.renderEntry(dataObj[x]["title"], dataObj[x]["fullurl"], dataObj[x]["extract"]);
+    }
+  },
+
+  clearEntries: function clearEntries() {
+    $(".container-main-articles").empty();
   }
 
 }
